@@ -8,7 +8,7 @@ A practical Security Operations Center (SOC) lab built in Oracle Cloud Infrastru
 
 This project was designed as a realistic SOC environment combining a centralized Elastic security stack with Windows and Linux telemetry, custom detection rules, and a controlled attacker infrastructure.
 
-The lab covers the full defensive workflow:
+The lab covers the defensive workflow:
 
 **Collect → Detect → Investigate → Hunt → Respond → Document**
 
@@ -24,10 +24,12 @@ The environment used three logical OCI networks:
 
 Target-to-SOC connectivity was established for telemetry collection, while the attacker environment remained logically separated from the monitoring infrastructure.
 
+See [`architecture/`](architecture/) for the architecture overview.
+
 ## Technology Stack
 
 - **Oracle Cloud Infrastructure (OCI)**
-- **Elastic Stack 9.4.2**
+- **Elastic Stack**
 - **Elastic Fleet / Elastic Agent**
 - **Windows Server 2022**
 - **Ubuntu 24.04**
@@ -37,9 +39,11 @@ Target-to-SOC connectivity was established for telemetry collection, while the a
 - **RDP / SSH**
 - **MITRE ATT&CK**
 
+> **Version note:** The project documentation identifies the Elastic Stack deployment as version 9.4.2. The report also contains an installation command referencing the `8.x` Elastic APT repository; this is retained as part of the historical lab documentation rather than presented here as a reproducible installation procedure.
+
 ## Detection Engineering
 
-Seven custom/validated detections were developed or tested during the project:
+Seven detections were developed or validated during the project:
 
 | Detection | Method | MITRE ATT&CK | Severity |
 |---|---|---|---|
@@ -52,6 +56,8 @@ Seven custom/validated detections were developed or tested during the project:
 | RDP Brute Force → Successful Login | EQL Sequence | T1110 + T1078 | Critical |
 
 The project also documents differences between prebuilt Elastic detection rules and the actual index/field mappings available in the lab, including the resulting use of custom detections.
+
+See [`detections/`](detections/) for the detection catalog.
 
 ## Adversary Simulation
 
@@ -67,6 +73,8 @@ A controlled attack scenario was used to generate realistic telemetry and valida
 
 All testing was performed against infrastructure created specifically for the lab.
 
+See [`attack-simulation/`](attack-simulation/) for the scenario overview.
+
 ## Incident Response
 
 The project includes a complete incident-response case study:
@@ -76,6 +84,14 @@ The project includes a complete incident-response case study:
 Severity: **Critical**
 
 The investigation demonstrates how multiple detections can be correlated into an attack narrative, followed by investigation, threat hunting, containment-oriented analysis, and documentation.
+
+See [`incident-response/`](incident-response/) for the case overview.
+
+## Threat Hunting
+
+The project includes threat-hunting activities built around the telemetry generated during the controlled attack scenario, with emphasis on validating suspicious activity and connecting individual events into a broader attack narrative.
+
+See [`threat-hunting/`](threat-hunting/) for the overview.
 
 ## What This Project Demonstrates
 
@@ -96,9 +112,9 @@ The investigation demonstrates how multiple detections can be correlated into an
 
 ## Documentation
 
-The complete technical project write-up is maintained in the repository under:
+The complete technical project write-up is maintained in the repository:
 
-`documentation/SOC-Lab-Documentation.pdf`
+**[SOC Analyst Home Lab — Complete Project Writeup](documentation/SOC-Lab-Documentation.pdf)**
 
 The report contains the architecture, deployment process, telemetry configuration, detection engineering, attack simulation, incident response, troubleshooting, detection summary, and lessons learned.
 
@@ -108,8 +124,22 @@ The report contains the architecture, deployment process, telemetry configuratio
 - Correct architecture is often more maintainable than relying on workarounds.
 - Detection rules must be validated against the actual telemetry and field mappings in the environment.
 - Threshold tuning is essential for balancing detection coverage and false positives.
-- Complex SOC troubleshooting often involves several independent configuration issues compounding together.
+- Complex SOC troubleshooting can involve several independent configuration issues compounding together.
 - Clear documentation is part of effective security operations.
+
+## Repository Structure
+
+```text
+SOC-Analyst-Home-Lab/
+├── architecture/       # Lab architecture and network design
+├── attack-simulation/  # Controlled adversary simulation
+├── detections/         # Detection engineering catalog
+├── documentation/      # Complete technical report
+├── incident-response/  # Incident response case study
+├── threat-hunting/     # Threat hunting overview
+├── .gitignore
+└── README.md
+```
 
 ## Disclaimer
 
