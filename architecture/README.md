@@ -1,5 +1,8 @@
 # Architecture
 
+<img width="1210" height="866" alt="img172" src="https://github.com/user-attachments/assets/d08ebc37-302e-4042-9526-cdf86222fb1b" />
+
+
 ## Environment Overview
 
 The SOC Analyst Home Lab was built in Oracle Cloud Infrastructure (OCI) as a segmented security-monitoring environment.
