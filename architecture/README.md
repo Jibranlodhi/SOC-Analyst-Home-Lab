@@ -8,26 +8,26 @@ The SOC Analyst Home Lab was built in Oracle Cloud Infrastructure (OCI) as a seg
 
 ```text
                          ┌──────────────────────────┐
-                         │       SOC-Analyst-Lab     │
-                         │       172.31.0.0/24       │
-                         │                            │
-                         │   Elastic / SOC Services  │
+                         │       SOC-Analyst-Lab    │
+                         │       172.31.0.0/24      │
+                         │                          │
+                         │   Elastic / SOC Services │
                          └────────────┬─────────────┘
                                       │
                            Telemetry / Peering
                                       │
                          ┌────────────┴─────────────┐
-                         │        Target-VCN         │
-                         │         10.0.0.0/23       │
-                         │                            │
-                         │ Windows Server / Ubuntu   │
-                         └───────────────────────────┘
+                         │        Target-VCN        │
+                         │         10.0.0.0/23      │
+                         │                          │
+                         │ Windows Server / Ubuntu  │
+                         └──────────────────────────┘
 
                          ┌───────────────────────────┐
                          │        Attacker-VCN       │
                          │        10.10.0.0/16       │
-                         │                            │
-                         │       Kali / C2 Lab      │
+                         │                           │
+                         │       Kali / C2 Lab       │
                          └───────────────────────────┘
                                   Isolated
 ```
